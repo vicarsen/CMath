@@ -1,8 +1,7 @@
-#include <cmath.h>
 #include <assert.h>
+#include <cmath.h>
 
-int main(void)
-{
+int main(void) {
   unsigned int n = 32;
   float *u = vector_alloc(n);
   float *v = vector_alloc(n);
@@ -32,13 +31,14 @@ int main(void)
   }
 
   vector_div(v, v, 3, n);
-  
+
   for (unsigned int i = 0; i < n; i++) {
     assert(v[i] == i && "Vector div failed!");
   }
 
   float product = vector_dot(v, v, n);
-  assert(product == (n - 1) * n * (2 * n - 1) / 6.0 && "Vector dot product failed!");
+  assert(product == (n - 1) * n * (2 * n - 1) / 6.0 &&
+         "Vector dot product failed!");
 
   vector_free(u);
   vector_free(v);
@@ -46,4 +46,3 @@ int main(void)
 
   return 0;
 }
-

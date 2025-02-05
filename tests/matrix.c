@@ -1,8 +1,7 @@
-#include <cmath.h>
 #include <assert.h>
+#include <cmath.h>
 
-void test_add()
-{
+void test_add() {
   unsigned int m = 8, n = 8;
   float *a = matrix_alloc(m, n);
   float *b = matrix_alloc(m, n);
@@ -32,7 +31,7 @@ void test_add()
   }
 
   matrix_sub(c, a, b, n, m);
-  
+
   for (unsigned int i = 0; i < m * n; i++) {
     assert(c[i] == 2.0f * i - m * n && "Matrix sub failed!");
   }
@@ -42,8 +41,7 @@ void test_add()
   matrix_free(c);
 }
 
-void test_mul()
-{
+void test_mul() {
   unsigned int m = 8, n = 8;
   float *a = matrix_alloc(m, n);
 
@@ -66,8 +64,7 @@ void test_mul()
   matrix_free(a);
 }
 
-void test_transpose()
-{
+void test_transpose() {
   unsigned int m = 8, n = 16;
   float *a = matrix_alloc(m, n);
   float *b = matrix_alloc(n, m);
@@ -88,8 +85,7 @@ void test_transpose()
   matrix_free(b);
 }
 
-void test_mat_mul()
-{
+void test_mat_mul() {
   unsigned int m = 16, n = 8, p = 16;
   float *a = matrix_alloc(m, n);
   float *b = matrix_alloc(n, p);
@@ -128,12 +124,10 @@ void test_mat_mul()
   matrix_free(c);
 }
 
-int main()
-{
+int main() {
   test_add();
   test_mul();
   test_transpose();
   test_mat_mul();
   return 0;
 }
-
