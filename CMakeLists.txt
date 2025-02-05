@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.28)
 project(
   CMath
   VERSION 0.0.1
-  DECRIPTION "A math library written in C"
+  DESCRIPTION "A math library written in C"
   LANGUAGES C
 )
 
