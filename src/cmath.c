@@ -47,18 +47,6 @@ void vector_mul(float *u, float alpha, float const *v, unsigned int n) {
   }
 }
 
-void vector_div(float *u, float const *v, float alpha, unsigned int n) {
-  __m256 *mu = (__m256 *)u;
-  __m256 const *mv = (__m256 const *)v;
-
-  __m256 malpha = _mm256_set1_ps(alpha);
-
-  unsigned int steps = n / 8;
-  for (unsigned int i = 0; i < steps; i++) {
-    mu[i] = _mm256_div_ps(mv[i], malpha);
-  }
-}
-
 float vector_dot(float const *u, float const *v, unsigned int n) {
   __m256 const *mu = (__m256 const *)u;
   __m256 const *mv = (__m256 const *)v;
@@ -98,11 +86,6 @@ void matrix_sub(float *c, float const *a, float const *b, unsigned int m,
 void matrix_mul(float *b, float alpha, float const *a, unsigned int m,
                 unsigned int n) {
   vector_mul(b, alpha, a, m * n);
-}
-
-void matrix_div(float *b, float const *a, float alpha, unsigned int m,
-                unsigned int n) {
-  vector_div(b, a, alpha, m * n);
 }
 
 void matrix_transpose(float *b, float const *a, unsigned int m,
